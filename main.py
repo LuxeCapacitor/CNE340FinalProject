@@ -16,34 +16,20 @@ def connect_to_sql():
 
 def create_table(cursor):
     cursor.execute('''CREATE TABLE IF NOT EXISTS weather (id INT PRIMARY KEY auto_increment,
-                    year DATETIME, total_rain FLOAT)''')
+                    year DATETIME, yearly_rain FLOAT)''')
 
 def query_sql(cursor, query):
     cursor.execute(query)
     return cursor
 
-'''def add_rain_data(weatherdetails):
-    conn = mysql.connector.connect(user='root', password='root',
-                                    host='127.0.0.1', database='weather', port='8889')
-    cursor = conn.cursor()
-    for i in range(len(weatherdetails["daily"]["time"])):
-        year = weatherdetails["daily"]["time"][i]
-        rain = weatherdetails["daily"]["rain_sum"][i]
-        query = cursor.execute('INSERT INTO weather(year, avg_rain) VALUES(%s, %s)',
-                       (year, rain))
-        conn.commit()
-    cursor.close()
-    conn.close()
-    return query_sql(cursor, query)'''
-
-def add_rain_data2013(weatherdetails2013):
+def add_rain_data2013(weatherdetails2013): # Blocks of code that sum the daily rain data by year and import the totals into the MySql database, Josh Brown
     conn = mysql.connector.connect(user='root', password='root',
                                     host='127.0.0.1', database='weather', port='8889')
     cursor = conn.cursor()
     rain_data = weatherdetails2013["daily"]["rain_sum"]
-    total_rain = sum(rain for rain in rain_data if rain is not None)
-    query = cursor.execute('INSERT INTO weather(year, total_rain) VALUES(%s, %s)',
-                           ("2013-12-31", total_rain))
+    yearly_rain = sum(rain for rain in rain_data if rain is not None)
+    query = cursor.execute('INSERT INTO weather(year, yearly_rain) VALUES(%s, %s)',
+                           ("2013-12-31", yearly_rain))
     conn.commit()
     cursor.close()
     conn.close()
@@ -59,9 +45,9 @@ def add_rain_data2014(weatherdetails2014):
                                     host='127.0.0.1', database='weather', port='8889')
     cursor = conn.cursor()
     rain_data = weatherdetails2014["daily"]["rain_sum"]
-    total_rain = sum(rain for rain in rain_data if rain is not None)
-    query = cursor.execute('INSERT INTO weather(year, total_rain) VALUES(%s, %s)',
-                           ("2014-12-31", total_rain))
+    yearly_rain = sum(rain for rain in rain_data if rain is not None)
+    query = cursor.execute('INSERT INTO weather(year, yearly_rain) VALUES(%s, %s)',
+                           ("2014-12-31", yearly_rain))
     conn.commit()
     cursor.close()
     conn.close()
@@ -77,9 +63,9 @@ def add_rain_data2015(weatherdetails2015):
                                     host='127.0.0.1', database='weather', port='8889')
     cursor = conn.cursor()
     rain_data = weatherdetails2015["daily"]["rain_sum"]
-    total_rain = sum(rain for rain in rain_data if rain is not None)
-    query = cursor.execute('INSERT INTO weather(year, total_rain) VALUES(%s, %s)',
-                           ("2015-12-31", total_rain))
+    yearly_rain = sum(rain for rain in rain_data if rain is not None)
+    query = cursor.execute('INSERT INTO weather(year, yearly_rain) VALUES(%s, %s)',
+                           ("2015-12-31", yearly_rain))
     conn.commit()
     cursor.close()
     conn.close()
@@ -95,9 +81,9 @@ def add_rain_data2016(weatherdetails2016):
                                     host='127.0.0.1', database='weather', port='8889')
     cursor = conn.cursor()
     rain_data = weatherdetails2016["daily"]["rain_sum"]
-    total_rain = sum(rain for rain in rain_data if rain is not None)
-    query = cursor.execute('INSERT INTO weather(year, total_rain) VALUES(%s, %s)',
-                           ("2016-12-31", total_rain))
+    yearly_rain = sum(rain for rain in rain_data if rain is not None)
+    query = cursor.execute('INSERT INTO weather(year, yearly_rain) VALUES(%s, %s)',
+                           ("2016-12-31", yearly_rain))
     conn.commit()
     cursor.close()
     conn.close()
@@ -113,9 +99,9 @@ def add_rain_data2017(weatherdetails2017):
                                     host='127.0.0.1', database='weather', port='8889')
     cursor = conn.cursor()
     rain_data = weatherdetails2017["daily"]["rain_sum"]
-    total_rain = sum(rain for rain in rain_data if rain is not None)
-    query = cursor.execute('INSERT INTO weather(year, total_rain) VALUES(%s, %s)',
-                           ("2017-12-31", total_rain))
+    yearly_rain = sum(rain for rain in rain_data if rain is not None)
+    query = cursor.execute('INSERT INTO weather(year, yearly_rain) VALUES(%s, %s)',
+                           ("2017-12-31", yearly_rain))
     conn.commit()
     cursor.close()
     conn.close()
@@ -131,9 +117,9 @@ def add_rain_data2018(weatherdetails2018):
                                     host='127.0.0.1', database='weather', port='8889')
     cursor = conn.cursor()
     rain_data = weatherdetails2018["daily"]["rain_sum"]
-    total_rain = sum(rain for rain in rain_data if rain is not None)
-    query = cursor.execute('INSERT INTO weather(year, total_rain) VALUES(%s, %s)',
-                           ("2018-12-31", total_rain))
+    yearly_rain = sum(rain for rain in rain_data if rain is not None)
+    query = cursor.execute('INSERT INTO weather(year, yearly_rain) VALUES(%s, %s)',
+                           ("2018-12-31", yearly_rain))
     conn.commit()
     cursor.close()
     conn.close()
@@ -149,9 +135,9 @@ def add_rain_data2019(weatherdetails2019):
                                     host='127.0.0.1', database='weather', port='8889')
     cursor = conn.cursor()
     rain_data = weatherdetails2019["daily"]["rain_sum"]
-    total_rain = sum(rain for rain in rain_data if rain is not None)
-    query = cursor.execute('INSERT INTO weather(year, total_rain) VALUES(%s, %s)',
-                           ("2019-12-31", total_rain))
+    yearly_rain = sum(rain for rain in rain_data if rain is not None)
+    query = cursor.execute('INSERT INTO weather(year, yearly_rain) VALUES(%s, %s)',
+                           ("2019-12-31", yearly_rain))
     conn.commit()
     cursor.close()
     conn.close()
@@ -167,9 +153,9 @@ def add_rain_data2020(weatherdetails2020):
                                     host='127.0.0.1', database='weather', port='8889')
     cursor = conn.cursor()
     rain_data = weatherdetails2020["daily"]["rain_sum"]
-    total_rain = sum(rain for rain in rain_data if rain is not None)
-    query = cursor.execute('INSERT INTO weather(year, total_rain) VALUES(%s, %s)',
-                           ("2020-12-31", total_rain))
+    yearly_rain = sum(rain for rain in rain_data if rain is not None)
+    query = cursor.execute('INSERT INTO weather(year, yearly_rain) VALUES(%s, %s)',
+                           ("2020-12-31", yearly_rain))
     conn.commit()
     cursor.close()
     conn.close()
@@ -185,9 +171,9 @@ def add_rain_data2021(weatherdetails2021):
                                     host='127.0.0.1', database='weather', port='8889')
     cursor = conn.cursor()
     rain_data = weatherdetails2021["daily"]["rain_sum"]
-    total_rain = sum(rain for rain in rain_data if rain is not None)
-    query = cursor.execute('INSERT INTO weather(year, total_rain) VALUES(%s, %s)',
-                           ("2021-12-31", total_rain))
+    yearly_rain = sum(rain for rain in rain_data if rain is not None)
+    query = cursor.execute('INSERT INTO weather(year, yearly_rain) VALUES(%s, %s)',
+                           ("2021-12-31", yearly_rain))
     conn.commit()
     cursor.close()
     conn.close()
@@ -203,9 +189,9 @@ def add_rain_data2022(weatherdetails2022):
                                     host='127.0.0.1', database='weather', port='8889')
     cursor = conn.cursor()
     rain_data = weatherdetails2022["daily"]["rain_sum"]
-    total_rain = sum(rain for rain in rain_data if rain is not None)
-    query = cursor.execute('INSERT INTO weather(year, total_rain) VALUES(%s, %s)',
-                           ("2022-12-31", total_rain))
+    yearly_rain = sum(rain for rain in rain_data if rain is not None)
+    query = cursor.execute('INSERT INTO weather(year, yearly_rain) VALUES(%s, %s)',
+                           ("2022-12-31", yearly_rain))
     conn.commit()
     cursor.close()
     conn.close()
@@ -269,16 +255,15 @@ def get_weather_entries(): # Provided by Farrius dean
                            .format(host=hostname, db=dbname, user=uname, pw=pwd, port=prt))
 
     df = pd.read_sql_table('weather', engine.connect())
-    entries = {'total_rain': list(df['total_rain'])}
+    entries = {'yearly_rain': list(df['yearly_rain'])}
     return entries
 
 weather_data = get_weather_entries()
-print(weather_data)
 
 # Dictionary with lists of data points stored in keys.
 data = {'year': [2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022],
         'avg_aqi': [54.1, 51.4, 54.5, 46.1, 56.8, 52.8, 48.7, 50.4, 47.8, 57.6],
-        'total_rain': [weather_data]}
+        'yearly_rain': weather_data["yearly_rain"]}
 
 # Convert data to DataFrame
 df = pd.DataFrame(data)
@@ -301,7 +286,7 @@ ax1.set_xlim(40, 60)
 ax1.set_xticks(range(40, 61, 5))
 
 # Plot data on second axis
-ax2.plot(df['total_rain'], df['year'], color='blue', linewidth=2)
+ax2.plot(df['yearly_rain'], df['year'], color='blue', linewidth=2)
 ax2.set_ylabel('Year')
 ax2.set_xlabel('Total Rainfall per year In Inches')
 ax2.set_title('Total Rainfall per year Over 10 years')
