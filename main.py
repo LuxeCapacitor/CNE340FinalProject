@@ -315,4 +315,4 @@ ax2.set_xlim(30, 70)
 ax2.set_xticks(range(30, 71, 10))
 
 # Show the plot
-plt.show()'''
+plt.show()
