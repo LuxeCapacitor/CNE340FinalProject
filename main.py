@@ -265,6 +265,11 @@ data = {'year': [2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022],
         'avg_aqi': [54.1, 51.4, 54.5, 46.1, 56.8, 52.8, 48.7, 50.4, 47.8, 57.6],
         'yearly_rain': weather_data["yearly_rain"]}
 
+# Citation - JO 
+# https://www.geeksforgeeks.org/how-to-plot-a-dataframe-using-pandas/
+# https://www.tutorialspoint.com/how-to-make-two-plots-side-by-side-using-python
+# https://www.activestate.com/resources/quick-reads/how-to-display-a-plot-in-python/
+
 # Convert data to DataFrame
 df = pd.DataFrame(data)
 
