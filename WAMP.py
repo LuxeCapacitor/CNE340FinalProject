@@ -9,6 +9,16 @@ from sqlalchemy import create_engine
 import pandas as pd
 import matplotlib.pyplot as plt
 
+mydb = mysql.connector.connect( # Provided by Dre Owens
+    host='127.0.0.1',
+    user='root',
+    password=''
+)
+
+mycursor = mydb.cursor()
+
+mycursor.execute("CREATE DATABASE weather")
+
 def connect_to_sql():
     conn = mysql.connector.connect(user='root', password='',
                                    host='127.0.0.1', database='weather', port='3306')
